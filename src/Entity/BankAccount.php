@@ -37,6 +37,18 @@ class BankAccount
      */
     private $balance;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity=CreditCard::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $BankAccount;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +98,30 @@ class BankAccount
     public function setBalance(float $balance): self
     {
         $this->balance = $balance;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBankAccount(): ?CreditCard
+    {
+        return $this->BankAccount;
+    }
+
+    public function setBankAccount(CreditCard $BankAccount): self
+    {
+        $this->BankAccount = $BankAccount;
 
         return $this;
     }
