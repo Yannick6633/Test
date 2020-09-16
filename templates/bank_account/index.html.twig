@@ -8,7 +8,9 @@
 	<h1>Page Comptes Bancaire</h1>
 
 	<div class="m-2">
+
 		<a class="btn btn-success" href="{{path('bank_account_creation')}}">Ajouter</a>
+
 		<table class="table">
 			<tr class="table-primary">
 				<td>IBAN</td>
@@ -16,6 +18,14 @@
 				<td>Identifiant Compte</td>
 				<td>Solde du compte</td>
 			</tr>
+			{% for bankAccount in bankAccounts %}
+				<tr>
+					<td>{{bankAccount.iban}}</td>
+					<td>{{bankAccount.bic}}</td>
+					<td>{{bankAccount.accountIdentifier}}</td>
+					<td>{{bankAccount.balance}} €</td>
+				</tr>
+			{% endfor %}
 		</table>
 
 	</div>

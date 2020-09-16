@@ -16,6 +16,7 @@ class BankAccountType extends AbstractType
             ->add('bic')
             ->add('accountIdentifier')
             ->add('balance')
+            ->add('user')
             
         ;
     }
