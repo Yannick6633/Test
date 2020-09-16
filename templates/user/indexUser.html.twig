@@ -1,9 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Utilisateurs
+{% endblock %}
 
 {% block body %}
 
-<h1>Index User</h1>
+	<h1>Page Utilisateurs</h1>
 
-{% endblock %}
+
+	<div class="m-2">
+		<table class="table">
+			<tr class="table-primary">
+				<td>Nom</td>
+				<td>Prénom</td>
+				<td>Date de naissance</td>
+				<td>Email</td>
+				<td>Compte Bancaire</td>
+			</tr>
+			{% for user in users %}
+				<tr>
+					<td>{{user.name}}</td>
+					<td>{{user.firstName}}</td>
+					<td>{{user.dateOfBirth|date('d-m-Y')}}</td>
+					<td>{{user.email}}</td>
+					<td></td>
+				</tr>
+			{% endfor %}
+
+	<a class="btn btn-success" href="{{path('user_creation')}}">Ajouter</a>
+
+		</table>
+
+	<a class="btn btn-success" href="{{path('bank_account')}}">Comptes Bancaire</a>
+	
+	<a class="btn btn-success" href="{{path('credit_card')}}">Cartes bancaire</a>
+
+	{% endblock %}

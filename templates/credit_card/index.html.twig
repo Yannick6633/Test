@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartes bancaire
+{% endblock %}
+
+{% block body %}
+
+	<h1>Page Cartes bancaire</h1>
+
+	<div class="m-2">
+
+		<table class="table">
+
+			<tr class="table-primary">
+				<td>Numéro carte</td>
+				<td>Identifiant carte</td>
+				<td>Statut</td>
+				<td>Date d'expiration</td>
+			</tr>
+			{% for creditCard in creditCards %}
+				<tr>
+					<td>{{creditCard.cardNumber}}</td>
+					<td>{{creditCard.cardIdentifier}}</td>
+					<td>{{creditCard.status}}</td>
+					<td>{{creditCard.validated|date('d-m-Y')}}</td>
+				</tr>
+			{% endfor %}
+
+			<a class="btn btn-success" href="{{path('credit_card_creation')}}">Ajouter</a>
+
+		</table>
+
+		<a class="btn btn-success" href="{{path('bank_account')}}">Comptes Bancaire</a>
+
+		<a class="btn btn-success" href="{{path('user_user')}}">Utilisateurs</a>
+
+	</div>
+
+{% endblock %}

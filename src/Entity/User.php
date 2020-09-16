@@ -45,14 +45,16 @@ class User
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity=BankAccount::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=BankAccount::class, mappedBy="user", orphanRemoval=true)
      */
-    private $User;
+    private $bankAccount;
 
     public function __construct()
     {
-        $this->User = new ArrayCollection();
+        $this->bankAccount = new ArrayCollection();
     }
+
+    
 
     public function getId(): ?int
     {
@@ -122,31 +124,33 @@ class User
     /**
      * @return Collection|BankAccount[]
      */
-    public function getUser(): Collection
+    public function getBankAccount(): Collection
     {
-        return $this->User;
+        return $this->bankAccount;
     }
 
-    public function addUser(BankAccount $user): self
+    public function addBankAccount(BankAccount $bankAccount): self
     {
-        if (!$this->User->contains($user)) {
-            $this->User[] = $user;
-            $user->setUser($this);
+        if (!$this->bankAccount->contains($bankAccount)) {
+            $this->bankAccount[] = $bankAccount;
+            $bankAccount->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeUser(BankAccount $user): self
+    public function removeBankAccount(BankAccount $bankAccount): self
     {
-        if ($this->User->contains($user)) {
-            $this->User->removeElement($user);
+        if ($this->bankAccount->contains($bankAccount)) {
+            $this->bankAccount->removeElement($bankAccount);
             // set the owning side to null (unless already changed)
-            if ($user->getUser() === $this) {
-                $user->setUser(null);
+            if ($bankAccount->getUser() === $this) {
+                $bankAccount->setUser(null);
             }
         }
 
         return $this;
     }
+
+   
 }

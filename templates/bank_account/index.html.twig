@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Comptes bancaire
+{% endblock %}
+
+{% block body %}
+
+	<h1>Page Comptes Bancaire</h1>
+
+	<div class="m-2">
+		<a class="btn btn-success" href="{{path('bank_account_creation')}}">Ajouter</a>
+		<table class="table">
+			<tr class="table-primary">
+				<td>IBAN</td>
+				<td>BIC</td>
+				<td>Identifiant Compte</td>
+				<td>Solde du compte</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<a class="btn btn-success" href="{{path('credit_card')}}">Cartes bancaire</a>
+
+	<a class="btn btn-success" href="{{path('user_user')}}">Utilisateurs</a>
+
+{% endblock %}

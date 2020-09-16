@@ -18,12 +18,12 @@ class CreditCard
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=16)
      */
     private $cardNumber;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     private $cardIdentifier;
 

@@ -39,10 +39,10 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $repository)
     {
-        $user = $repository->findAll();
+        $users = $repository->findAll();
 
         return $this->render('user/indexUser.html.twig', [
-            'user' => $user
+            'users' => $users
         ]);
     }
 
@@ -62,8 +62,6 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_user');
         }
         
-
-
         return $this->render('user/creation.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
@@ -71,3 +69,5 @@ class UserController extends AbstractController
         ]);
     }
 }
+
+
