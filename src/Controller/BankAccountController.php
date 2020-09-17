@@ -39,7 +39,7 @@ class BankAccountController extends AbstractController
      */
     public function index(BankAccountRepository $repository)
     {
-        $bankAccounts = $repository->findAll();
+        $bankAccounts = $this->repository->findAll();
 
         return $this->render('bank_account/index.html.twig', [
             'bankAccounts' => $bankAccounts

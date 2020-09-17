@@ -16,6 +16,7 @@ class CreditCardType extends AbstractType
             ->add('cardIdentifier')
             ->add('status')
             ->add('validated')
+            ->add('bankAccount')
         ;
     }
 

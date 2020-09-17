@@ -37,6 +37,16 @@ class CreditCard
      */
     private $validated;
 
+    /**
+     * @ORM\OneToOne(targetEntity=BankAccount::class, mappedBy="creditCard", cascade={"persist", "remove"})
+     */
+    private $bankAccount;
+
+    public function __toString(): string
+    {
+        return $this->id;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +96,23 @@ class CreditCard
     public function setValidated(\DateTimeInterface $validated): self
     {
         $this->validated = $validated;
+
+        return $this;
+    }
+
+    public function getBankAccount(): ?BankAccount
+    {
+        return $this->bankAccount;
+    }
+
+    public function setBankAccount(BankAccount $bankAccount): self
+    {
+        $this->bankAccount = $bankAccount;
+
+        // set the owning side of the relation if necessary
+        if ($bankAccount->getCreditCard() !== $this) {
+            $bankAccount->setCreditCard($this);
+        }
 
         return $this;
     }

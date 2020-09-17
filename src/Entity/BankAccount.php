@@ -43,6 +43,12 @@ class BankAccount
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CreditCard::class, inversedBy="bankAccount", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $creditCard;
+
    
     
 
@@ -108,6 +114,18 @@ class BankAccount
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCreditCard(): ?CreditCard
+    {
+        return $this->creditCard;
+    }
+
+    public function setCreditCard(CreditCard $creditCard): self
+    {
+        $this->creditCard = $creditCard;
 
         return $this;
     }

@@ -40,7 +40,7 @@ class CreditCardController extends AbstractController
      */
     public function index(CreditCardRepository $repository)
     {
-        $creditCards = $repository->findAll();
+        $creditCards = $this->repository->findAll();
 
         return $this->render('credit_card/index.html.twig', [
             'creditCards' => $creditCards
