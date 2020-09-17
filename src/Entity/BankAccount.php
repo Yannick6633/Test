@@ -50,6 +50,11 @@ class BankAccount
      */
     private $creditCard;
 
+    public function __toString(): string
+    {
+        return $this->id;
+    }
+
 
     public function getId(): ?int
     {

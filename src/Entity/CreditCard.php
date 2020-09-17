@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CreditCardRepository;
+//use App\Repository\CreditCardRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=CreditCardRepository::class)
@@ -42,6 +43,7 @@ class CreditCard
      */
     private $bankAccount;
 
+   
     public function __toString(): string
     {
         return $this->id;
