@@ -44,6 +44,7 @@ class UserController extends AbstractController
 
         return $this->render('user/indexUser.html.twig', [
             'users' => $users,
+           
             
         ]);
     }

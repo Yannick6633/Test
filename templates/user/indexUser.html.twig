@@ -23,9 +23,14 @@
 					<td>{{user.firstName}}</td>
 					<td>{{user.dateOfBirth|date('d-m-Y')}}</td>
 					<td>{{user.email}}</td>
-					
+					<td>{% for bankAccount in user.bankAccount %}
+							{{ bankAccount.iban }} </br>
+						{% endfor %}
+					</td>
 				</tr>
 			{% endfor %}
+						
+						
 
 			
 			<a class="btn btn-success" href="{{path('user_creation')}}">Ajouter</a>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BankAccountRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -48,9 +49,6 @@ class BankAccount
      * @ORM\JoinColumn(nullable=false)
      */
     private $creditCard;
-
-   
-    
 
 
     public function getId(): ?int
