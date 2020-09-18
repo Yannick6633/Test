@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\CreditCard;
 use App\Form\CreditCardType;
 use App\Repository\CreditCardRepository;
@@ -31,8 +30,8 @@ class CreditCardController extends AbstractController
      */
     public function __construct(CreditCardRepository $repository, EntityManagerInterface $entityManager)
     {
-       $this->repository = $repository;
-       $this->entityManager = $entityManager; 
+        $this->repository = $repository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -47,7 +46,7 @@ class CreditCardController extends AbstractController
         ]);
     }
 
-     /**
+    /**
      * @Route("/credit/card/creation", name="credit_card_creation")
      */
     public function add(Request $request)
@@ -56,7 +55,7 @@ class CreditCardController extends AbstractController
         $form = $this->createForm(CreditCardType::class, $creditCard);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($creditCard);
             $this->entityManager->flush();
 
@@ -67,7 +66,5 @@ class CreditCardController extends AbstractController
             'creditCard' => $creditCard,
             'form' => $form->createView(),
         ]);
-
     }
-
 }

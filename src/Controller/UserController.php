@@ -30,8 +30,8 @@ class UserController extends AbstractController
      */
     public function __construct(UserRepository $repository, EntityManagerInterface $entityManager)
     {
-       $this->repository = $repository;
-       $this->entityManager = $entityManager; 
+        $this->repository = $repository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -40,16 +40,15 @@ class UserController extends AbstractController
     public function index()
     {
         $users = $this->repository->findAll();
-        
 
         return $this->render('user/indexUser.html.twig', [
             'users' => $users,
-           
-            
+
         ]);
     }
 
-     /**
+
+    /**
      * @Route("/user/creation", name="user_creation")
      */
     public function add(Request $request)
@@ -58,19 +57,17 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
             return $this->redirectToRoute('user_user');
         }
-        
+
         return $this->render('user/creation.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-            
+
         ]);
     }
 }
-
-

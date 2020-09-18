@@ -43,7 +43,6 @@ class CreditCard
      */
     private $bankAccount;
 
-   
     public function __toString(): string
     {
         return $this->id;

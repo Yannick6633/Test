@@ -19,6 +19,18 @@ class BankAccountRepository extends ServiceEntityRepository
         parent::__construct($registry, BankAccount::class);
     }
 
+    //Requête avec la classe BankAccount pour récupérer un utilisateur avec son identifiant bancaire
+    public function getUserByAccountIdentifier()
+    {
+        return $this->createQueryBuilder('b')
+        ->select('b.accountIdentifier', 'b.userId')
+        ->leftJoin('user', 'u')
+        ->where('u.id = b.userId')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
     // /**
     //  * @return BankAccount[] Returns an array of BankAccount objects
     //  */

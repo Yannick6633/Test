@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BankAccountController extends AbstractController
 {
 
-      /**
+    /**
      * @var BankAccountRepository
      */
     private $repository;
@@ -30,8 +30,8 @@ class BankAccountController extends AbstractController
      */
     public function __construct(BankAccountRepository $repository, EntityManagerInterface $entityManager)
     {
-       $this->repository = $repository;
-       $this->entityManager = $entityManager; 
+        $this->repository = $repository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -55,7 +55,7 @@ class BankAccountController extends AbstractController
         $form = $this->createForm(BankAccountType::class, $bankAccount);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($bankAccount);
             $this->entityManager->flush();
 
@@ -66,6 +66,5 @@ class BankAccountController extends AbstractController
             'bankAccount' => $bankAccount,
             'form' => $form->createView(),
         ]);
-
     }
 }

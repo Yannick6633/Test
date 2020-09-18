@@ -55,7 +55,6 @@ class BankAccount
         return $this->id;
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -132,6 +131,4 @@ class BankAccount
 
         return $this;
     }
-
-   
 }
